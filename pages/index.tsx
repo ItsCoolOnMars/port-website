@@ -1,49 +1,38 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import { getSortedPostsData } from '../lib/posts';
-import Link from 'next/link';
-import Date from '../components/date';
 import { GetStaticProps } from 'next';
+import { request } from '../lib/datocms';
 
-export default function Home({
-  allPostsData,
-}: {
-  allPostsData: {
-    date: string;
-    title: string;
-    id: string;
-  }[];
-}) {
+const HOMEPAGE_QUERY = `query MyQuery {
+  allPosts(first: "1") {
+    id
+    _modelApiKey
+    _status
+  }
+  allAuthors(locale: en) {
+    id
+    _firstPublishedAt
+  }
+}`;
+
+export default function Home(data) {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section>
-        <h2>Blog</h2>
-        <ul>
-          {allPostsData.map(({ id, date, title }) => (
-            <li key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <div>{JSON.stringify(data, null, 2)}</div>;
     </Layout>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
+  const data = await request({
+    query: HOMEPAGE_QUERY,
+    variables: { limit: 10 },
+    preview: undefined,
+  });
   return {
-    props: {
-      allPostsData,
-    },
+    props: { data },
   };
 };
