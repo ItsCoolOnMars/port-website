@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import React from 'react';
+import MyNavbar from './navbar';
 
 const name = 'Maxim';
-export const siteTitle = 'My portfolio website';
+export const siteTitle = "Maxim's Blog";
 
 export default function Layout({
   children,
@@ -14,51 +14,28 @@ export default function Layout({
   home?: boolean;
 }) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-      </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <img
-              src="/images/profile_big.png"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
+    <div>
+      <div>
+        <MyNavbar />
+      </div>
+      <div>
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="Maxim Musikhin's personal portfolio website"
+          />
+        </Head>
+
+        <main>{children}</main>
+        {!home && (
+          <div>
             <Link href="/">
-              <a>
-                <img
-                  src="/images/profile_big.png"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
-                />
-              </a>
+              <a>← Back to home</a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
+          </div>
         )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
