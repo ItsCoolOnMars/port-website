@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 export default function About() {
   return (
     <Layout>
-      <div>ABOUT</div>
+      <div>BLOG</div>
     </Layout>
   );
 }

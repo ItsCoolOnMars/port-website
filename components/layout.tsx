@@ -15,7 +15,7 @@ export default function Layout({
 }) {
   return (
     <div>
-      <div>
+      <div className="py-4">
         <MyNavbar />
       </div>
       <div>
