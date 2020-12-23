@@ -3,19 +3,12 @@ import Link from 'next/link';
 import React from 'react';
 import MyNavbar from './navbar';
 
-const name = 'Maxim';
 export const siteTitle = "Maxim's Blog";
 
-export default function Layout({
-  children,
-  home,
-}: {
-  children: React.ReactNode;
-  home?: boolean;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <div className="py-4">
+      <div className="py-8">
         <MyNavbar />
       </div>
       <div>
@@ -28,14 +21,12 @@ export default function Layout({
         </Head>
 
         <main>{children}</main>
-        {!home && (
-          <div>
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
-          </div>
-        )}
       </div>
+      <footer className="font-thin scale-50">
+        <p>
+          Made by <a href="https://nextjs.org/">Next.js</a>
+        </p>
+      </footer>
     </div>
   );
 }

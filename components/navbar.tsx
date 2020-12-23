@@ -1,48 +1,66 @@
 import Link from 'next/link';
 import * as React from 'react';
-import { Button, Nav, Form, Navbar, FormControl, Image } from 'react-bootstrap';
+import {
+  Button,
+  Nav,
+  Form,
+  Navbar,
+  FormControl,
+  Image,
+  Container,
+} from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const name = 'Maxim';
 const title = 'My Website';
-//mix-blend-mode: exclusion;
-//backdrop-filter: blur()
+// mix-blend-mode: exclusion;
+// backdrop-filter: blur()
 // create custom png files for each nav tab?
 // invert color https://revelry.co/css-font-color/
+// flex-flow: nowrap
 const MyNavbar = () => {
   return (
-    <div>
-      <Navbar bg="" variant="light" className="py-0 uppercase" fixed="top">
+    <Navbar
+      variant="light"
+      expand="sm"
+      bg="white"
+      className="flex justify-center py-0 px-4 uppercase"
+      fixed="top"
+    >
+      <Container className="">
         <Link href="/">
-          <Navbar.Brand
-            href="/"
-            className="px-2 my-1 mx-3 rounded h-15 font-bold"
-          >
+          <Nav className="4p-2 mx-3 font-bold text-base">
             <Image
               alt=""
               src="/images/profile.png"
-              width="20"
-              height="20"
-              className="d-inline-block align-center"
+              width="24"
+              height="24"
+              className="cursor-pointer inline-block mr-2"
               roundedCircle
-            />{' '}
-            {title}
-          </Navbar.Brand>
+            />
+            <p className="inline-block cursor-pointer text-base m-0 content-center whitespace-nowrap">
+              {' '}
+              {title}
+            </p>
+          </Nav>
         </Link>
-        <Nav className="mr-auto">
-          <Link href="/about">
-            <span className="p-2 mx-3 cursor-pointer rounded-md h-15 font-bold">
-              About me
-            </span>
-          </Link>
-          <Link href="/blog">
-            <span className="p-2 mx-3 cursor-pointer rounded-md h-15 font-bold">
-              Blog
-            </span>
-          </Link>
-        </Nav>
-      </Navbar>
-    </div>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Link href="/blog">
+              <span className="p-2 mx-3 cursor-pointer rounded-md h-15 text-base font-bold whitespace-nowrap">
+                Blog
+              </span>
+            </Link>
+            <Link href="/about">
+              <span className="p-2 mx-3 cursor-pointer rounded-md h-15 text-base font-bold whitespace-nowrap">
+                About me
+              </span>
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

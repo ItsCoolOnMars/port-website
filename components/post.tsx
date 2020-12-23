@@ -1,11 +1,19 @@
 import Date from './date';
 import CoverImage from './cover-image';
 import Link from 'next/link';
+import React from 'react';
+import { Button, Card } from 'react-bootstrap';
 
-export default function Post({ title, coverImage, date, slug }) {
+// Can be as Bootstrap card
+export default function Post({ title, coverImage, date, slug, description }) {
   return (
-    <section>
-      <div className="mb-8 md:mb-16">
+    <Link as={`/posts/${slug}`} href="/posts/[slug]">
+      <div className="cursor-pointer">
+        <Card style={{ width: '30rem' }}>
+          <Card.Img variant="top" src={coverImage.responsiveImage.srcSet} />
+          <Card.Body>
+            <Card.ImgOverlay>
+              {/* <div className="mb-8 md:mb-16">
         <CoverImage
           title={title}
           responsiveImage={coverImage.responsiveImage}
@@ -23,7 +31,15 @@ export default function Post({ title, coverImage, date, slug }) {
             <Date dateString={date} />
           </div>
         </div>
+      </div> */}
+              <Card.Title className="bg-gray-50 text-center uppercase">
+                {title}
+              </Card.Title>
+            </Card.ImgOverlay>
+            <Card.Text>{description}</Card.Text>
+          </Card.Body>
+        </Card>
       </div>
-    </section>
+    </Link>
   );
 }
