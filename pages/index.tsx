@@ -15,7 +15,7 @@ export default function Home({ allPosts }) {
         <title>{siteTitle}</title>
       </Head>
       <div className="fluid break-words">
-        <div className="container mx-auto px-5 inline-block">
+        <div className="container mx-auto px-5 inline-block card-group">
           {allPosts.map(({ coverImage, date, title, slug, description }) => (
             <Post
               coverImage={coverImage}
@@ -27,7 +27,7 @@ export default function Home({ allPosts }) {
           ))}
         </div>
         <div></div>
-        <div className="bg-gray-100 whitespace-pre-wrap"></div>;
+        <div className="bg-gray-100 whitespace-pre-wrap"></div>
       </div>
     </Layout>
   );

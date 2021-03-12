@@ -12,7 +12,7 @@ import {
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const name = 'Maxim';
-const title = 'My Website';
+const title = 'Maxim';
 // mix-blend-mode: exclusion;
 // backdrop-filter: blur()
 // create custom png files for each nav tab?
@@ -27,7 +27,7 @@ const MyNavbar = () => {
       className="flex justify-center py-0 px-4 uppercase"
       fixed="top"
     >
-      <Container className="">
+      <Container className="col-sm-auto">
         <Link href="/">
           <Nav className="4p-2 mx-3 font-bold text-base">
             <Image

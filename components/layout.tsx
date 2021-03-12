@@ -22,11 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <main>{children}</main>
       </div>
-      <footer className="font-thin scale-50">
-        <p>
-          Made by <a href="https://nextjs.org/">Next.js</a>
-        </p>
-      </footer>
+      <footer className="font-thin scale-50"></footer>
     </div>
   );
 }
