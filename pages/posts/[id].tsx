@@ -1,8 +1,6 @@
 import Layout from '../../components/layout';
-import { getAllPostIds, getPostData } from '../../lib/posts';
 import Head from 'next/head';
-import Date from '../../components/date';
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { getAllPostsForHome } from '../../lib/datocms';
 
 export default function Post() {
   return (
@@ -18,3 +16,10 @@ export default function Post() {
     </Layout>
   );
 }
+
+// export async function getStaticProps(preview = false) {
+//   const allPosts = (await getAllPostsForHome(false)) || [];
+//   return {
+//     props: { allPosts },
+//   };
+// }

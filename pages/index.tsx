@@ -14,8 +14,8 @@ export default function Home({ allPosts }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <div className="fluid break-words">
-        <div className="container mx-auto px-5 inline-block card-group">
+      <div className="grid py-8 px-20">
+        <div className="mx-auto my-auto card-group">
           {allPosts.map(({ coverImage, date, title, slug, description }) => (
             <Post
               coverImage={coverImage}
