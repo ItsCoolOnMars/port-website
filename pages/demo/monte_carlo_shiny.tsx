@@ -7,8 +7,8 @@ export default function Post() {
       <Head>
         <title></title>
       </Head>
-      <article className="py-8">
-        <h1 className="mx-4">Shiny Demo App</h1>
+      <article>
+        <h1 className="pt-8 mx-4">Shiny Demo App</h1>
         <div>
           <iframe
             className="py-2 px-2 my-5 mx-5"
